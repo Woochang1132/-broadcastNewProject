@@ -237,6 +237,20 @@ function handleAddStream(data) {
   peerFace.srcObject = data.stream;
 }
 
+//좌우반전 
+$("#check01").click(function() {
+  if(myFace.style.transform == "")  {
+    myFace.style.transform = "scaleX(-1)";
+  } else {
+    myFace.style.transform = "";
+  }
+  
+});
+
+
+
+
+
 micButton.addEventListener("click", handleMuteClick);
 videoButton.addEventListener("click", handleCameraClick);
 chatButton.addEventListener("click", handleChatClick);
