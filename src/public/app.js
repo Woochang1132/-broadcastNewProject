@@ -11,6 +11,7 @@ const camerasSelect = document.getElementById("cameras");
 const call = document.getElementById("call");
 const messageForm = document.getElementById("msg");
 const chatArea = document.getElementById("chatWrapper");
+const closeButton = document.querySelector("#close")
 
 let myStream;
 let muted = false;
@@ -238,8 +239,8 @@ function handleAddStream(data) {
 }
 
 //좌우반전 
-$("#check01").click(function() {
-  if(myFace.style.transform == "")  {
+$("#reverse").click(function() {
+  if(myFace.style.transform === "")  {
     myFace.style.transform = "scaleX(-1)";
   } else {
     myFace.style.transform = "";
@@ -248,9 +249,15 @@ $("#check01").click(function() {
 });
 
 
+//방송 종료
+function closeClick() {
+
+ window.history.back();
+
+}
 
 
-
+closeButton.addEventListener("click", closeClick);
 micButton.addEventListener("click", handleMuteClick);
 videoButton.addEventListener("click", handleCameraClick);
 chatButton.addEventListener("click", handleChatClick);
