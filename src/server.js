@@ -8,7 +8,7 @@ app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 app.use("/public", express.static(__dirname + "/public"));
 app.get("/", (_, res) => {
-  console.log('root')
+  
   res.render("home")
 });
 app.get("/*", (_, res) => res.redirect("/"));
@@ -59,6 +59,11 @@ wsServer.on("connection", (socket) => {
       socket.to(room).emit("bye", socket.nickname)
     );
   });
+  socket.on("ice", (ice, roomName) => {
+    socket.to(roomName).emit("ice", ice);
+  });
+
+
 });
 
 const handleListen = () => console.log(`Listening on http://localhost:3000`);

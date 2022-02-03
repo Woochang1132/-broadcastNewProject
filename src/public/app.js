@@ -206,6 +206,21 @@ socket.on("bye", (nickname) => {
   peerFace.hidden = true;
 });
 
+socket.on("bye", (nickname) => {
+  addMessage(`${nickname} left! 😿`);
+  myFace.classList.remove("small");
+  peerFace.hidden = true;
+});
+
+socket.on("ice", (ice) => {
+  console.log("received candidate");
+
+  peerFace.hidden = false;
+  myFace.classList.add("small");
+  myPeerConnection.addIceCandidate(ice);
+});
+
+
 // RTC Code
 
 function makeConnection() {
@@ -304,12 +319,49 @@ zoomIn4.addEventListener("click",handleZoomIn4);
 
 
 
+
+
+
+// 의사표현 
+
+/* const emoji1 = document.getElementById("emoji1");
+
+function handleemoji1() {
+    let input = document.getElementById("test");
+    input.value =  "❤";
+}
+
+emoji1.addEventListener("click", handleemoji1); */
+
+
+
+$(document).ready(function() {
+  $(`#emoji1`).click(function() {
+    let input = $("#test");
+    input.val(input.val() + "😍");
+  });
+  $(`#emoji2`).click(function() {
+    let input = $("#test");
+    input.val(input.val() + "👏");
+  });
+  $(`#emoji3`).click(function() {
+    let input = $("#test");
+    input.val(input.val() + "😡");
+  });
+  input.val("");
+});
+
+
+
+
 //방송 종료
 function closeClick() {
 
- window.history.back();
+  window.history.back();
+ 
+ }
 
-}
+
 
 
 closeButton.addEventListener("click", closeClick);
