@@ -14,12 +14,13 @@ const chatArea = document.getElementById("chatWrapper");
 const closeButton = document.querySelector("#close")
 
 let myStream;
-let muted = false;
-let cameraOff = false;
-let roomName;
-let userName;
-let myPeerConnection;
-let myDataChannel;
+let muted = false; //음소거
+let cameraOff = false; //카메라 상태
+let roomName; //방 이름
+let userName; //사용자 이름
+let userName1;
+let myPeerConnection; // 상대방 연결 확인
+let myDataChannel; //나의 채널 정보
 
 function addMessage(message, isYou) {
   const ul = chatArea.querySelector("ul");
@@ -137,8 +138,11 @@ async function handleWelcomeSubmit(event) {
   });
   roomName = input[0].value;
   userName = input[1].value;
+  
   input[0].value = "";
   input[1].value = "";
+  
+  
 }
 
 function handleMessageSubmit(event) {
